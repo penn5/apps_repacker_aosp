@@ -32,6 +32,8 @@ $ANDROID_HOME/build-tools/28.0.3/d8 --output build/ --lib ../libs/framework.jar 
 java -jar ../baksmali.jar d build/classes.dex -o HwIms/smali
 )
 
+perl -0777 -i -p -e 's|invoke-virtual \{([pv0-9]+)\}, Lcom/android/internal/telephony/Phone;->getImsSwitch\(\)Z\s+move-result ([pv0-9]+)|const/4 \2, 0x1|g' HwIms/smali/com/huawei/ims/HwImsUtImpl.smali
+
 sed -i -E \
 	-e 's;Landroid/telephony/ims/feature/MMTelFeature;Landroid/telephony/ims/compat/feature/MMTelFeature;g' \
 	-e 's;Landroid/telephony/ims/stub/ImsUtListenerImplBase;Landroid/telephony/ims/compat/stub/ImsUtListenerImplBase;g' \
