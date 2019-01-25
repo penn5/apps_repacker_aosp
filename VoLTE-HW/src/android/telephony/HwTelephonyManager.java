@@ -20,7 +20,7 @@ public class HwTelephonyManager {
 		return 0;
 	}
 
-	public bool isCTSimCard(int p) {
+	public boolean isCTSimCard(int p) {
 		return false;
 	}
 }
