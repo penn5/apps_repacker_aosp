@@ -7,7 +7,7 @@ if [ "$#" -ne 1 ];then
 	exit 1
 fi
 
-app_folder="$1"
+app_folder="$(realpath $1)"
 libdst="HwIms/lib/arm64-v8a/"
 
 rm -Rf HwIms
@@ -22,12 +22,7 @@ if [ ! -d HwIms/smali ];then
 	)
 fi
 mkdir -p "$libdst"
-find "$app_folder"/lib/arm64 -type f -exec cp '{}' "$libdst" \; 
-find "$app_folder"/lib/arm64 -type l -exec readlink '{}' + | \
-	while read f;do
-		p="$(echo $f |sed -E 's;/system;;g')"
-		cp "$system_folder"/$p "$libdst"
-	done
+find "$app_folder"/lib/arm64 -type f -exec cp '{}' "$libdst" \;
 
 (
 set -x
