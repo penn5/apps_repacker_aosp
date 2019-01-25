@@ -7,7 +7,7 @@ public class HwTelephonyFactory {
     public HwChrServiceManager getHwChrServiceManager() {
         return HwChrServiceManager.getDefault();
     }
-    public HwVolteChrManager getHwVolteChrManager {
+    public HwVolteChrManager getHwVolteChrManager() {
         return HwVolteChrManager.getDefault();
     }
 }
