@@ -43,5 +43,5 @@ public class HwModemCapability {
 			return -1;
 		}
 		return (origChar - 65) + 10;
-        }
+	    }
 };
