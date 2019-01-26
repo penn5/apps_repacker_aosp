@@ -3,6 +3,9 @@ package com.android.internal.telephony;
 // This file copypasta from https://github.com/dstmath/HWFramework/blob/master/P9-8.0/src/main/java/com/android/internal/telephony/HwVolteChrManager.java
 
 import android.content.Context;
+import com.android.internal.telephony.imsphone.ImsPhone;
+import com.android.internal.telephony.imsphone.ImsPhoneConnection;
+import com.android.internal.telephony.Call;
 
 public interface HwVolteChrManager {
 	void init(Context context);

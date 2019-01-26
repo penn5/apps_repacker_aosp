@@ -1,5 +1,7 @@
 package com.android.internal.telephony;
 
+import android.os.Message;
+
 public class HwChrServiceManagerImpl implements HwChrServiceManager {
 
 	private static HwChrServiceManager mInstance = new HwChrServiceManagerImpl();
