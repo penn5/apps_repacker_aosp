@@ -1,5 +1,10 @@
 package com.android.internal.telephony;
 
+import android.content.Context;
+import com.android.internal.telephony.imsphone.ImsPhone;
+import com.android.internal.telephony.imsphone.ImsPhoneConnection;
+import com.android.internal.telephony.Call;
+
 public class HwVolteChrManagerImpl implements HwVolteChrManager {
 
 // Constant values from stock ROM.
@@ -86,11 +91,11 @@ public class HwVolteChrManagerImpl implements HwVolteChrManager {
 	public void updateCallLog(ImsPhoneConnection conn, ImsPhone phone) {};
 	public void updateMtCallLog(int event) {};
 	public void triggerCallLostEvent(ImsPhoneConnection conn, ImsPhone phone, int callType) {};
-	public void triggerNoServiceDuringCallEvent(Call fgCall, Call rCall, Call bgCall) {};
 	public void triggerHangupFailedEvent() {};
 	public void triggerAnswerFailedEvent(int callState) {};
 	public void triggerMtCallFailEvent(long ringTime, long inviteTime, int failType, int failCause) {};
-	public boolean triggerImsRegFailEvent(ImsPhone imsPhone) {};
+	public void triggerNoServiceDuringCallEvent(Call call, Call call2, Call call3) {};
+	public boolean triggerImsRegFailEvent(ImsPhone imsPhone) {return true;};
 	public void setSrvccFlag(boolean flag) {};
 	public void notifySrvccState(int state) {};
 	public void notifyCSRedial() {};
