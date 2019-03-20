@@ -5,3 +5,6 @@ VoLTE-HW/apk
 VoLTE-HW/vendor.huawei.hardware.radio-java.jar
 VoLTE-HW/classes.dex
 VoLTE-HW/classes-dex2jar.jar
+mapcon/Mapcon.apk
+mapcon/Mapcon
+mapcon/build
