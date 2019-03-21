@@ -1,5 +1,5 @@
 CRITICAL:
-android.telephony.HwTelephonyManager # A (nearly) full reimplementation required, I think. :(
+HwModemCapability from HwIms into src.
 HIGH:
 com.android.ims.HwImsManager # Probably a pretty simple shim.
 com.huawei.android.net.wifi.WifiManagerEx # Probably just used to check if wifi is on or not for VoWifi, pretty simple if so
