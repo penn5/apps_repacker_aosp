@@ -7,7 +7,22 @@ import com.android.internal.telephony.IPhoneCallback;
 import android.util.Log;
 import static java.lang.Math.toIntExact;
 
+import vendor.huawei.hardware.radio.V1_0.IRadio;
+
 public class HwTelephonyManager {
+
+    private static IRadio radio;
+    private static HwRadioResponse response;
+    private static HwRadioIndication indication;
+    private static final String[] serviceNames = {"rildi", "rildi2", "rildi3"};
+
+    static synchronized void prepareIRadio(int slotId) {
+        if (radio != null)
+            return radio;
+        radio = IRadio.getService(serviceNames[slotId]);
+        response = new HwRadioResponse();
+        response = new HwRadioResponse();
+    }
 
     public static final int PHONE_EVENT_IMSA_TO_MAPCON = 4;
     public static final int PHONE_EVENT_RADIO_AVAILABLE = 1;
@@ -28,14 +43,14 @@ public class HwTelephonyManager {
     }
     public boolean handleMapconImsaReq(int phoneId, byte[] data) {
         return false;
-        //TODO wtf.
+        //TODO Intergrate with IRadio
     }
     public boolean registerForPhoneEvent(int i1, IPhoneCallback callback, int i2) {
-        // TODO depends on phone_huawei
+        // TODO store reg value and send IMSA_TO_MAPCON when we get a imsa indication
         return false;
     }
     public boolean unregisterForPhoneEvent(IPhoneCallback callback) {
-        // TODO depends on phone_huawei
+        // TODO clear reg value
         return false;
     }
     public int getUiccAppType(int phoneId) {

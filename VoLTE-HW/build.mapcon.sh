@@ -15,11 +15,7 @@ rm -f HwIms_classes.dex
 rm -f HwIms_classes-dex2jar.jar
 ../dex2jar/d2j-dex2jar.sh HwIms_classes.dex
 
-rm -f vendor.huawei.hardware.radio-java.jar
-../dex2jar/d2j-class-version-switch.sh 8 HwIms_classes-dex2jar.jar vendor.huawei.hardware.radio-java.jar
-zip -qd vendor.huawei.hardware.radio-java.jar 'android/*' 'vendor/*' 'com/huawei/*' 'com/android/*' # Leaving only com/hisi/mapcon
+rm -f com.hisi.mapcon-java.jar
+../dex2jar/d2j-class-version-switch.sh 8 HwIms_classes-dex2jar.jar com.hisi.mapcon-java.jar
 
-#LD_LIBRARY_PATH=../signapk/ java -jar ../signapk/signapk.jar -a 4096\
-#	../keys/platform.x509.pem \
-#	../keys/platform.pk8 \
-#	HwIms/dist/HwIms.apk HwIms.apk
+zip -qd com.hisi.mapcon-java.jar 'android/*' 'vendor/*' 'com/huawei/*' 'com/android/*' # Leaving only com/hisi/mapcon

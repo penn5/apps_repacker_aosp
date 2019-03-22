@@ -19,7 +19,3 @@ rm -f vendor.huawei.hardware.radio-java.jar
 ../dex2jar/d2j-class-version-switch.sh 8 HwIms_classes-dex2jar.jar vendor.huawei.hardware.radio-java.jar
 zip -qd vendor.huawei.hardware.radio-java.jar 'android/*' 'com/*'
 
-#LD_LIBRARY_PATH=../signapk/ java -jar ../signapk/signapk.jar -a 4096\
-#	../keys/platform.x509.pem \
-#	../keys/platform.pk8 \
-#	HwIms/dist/HwIms.apk HwIms.apk
