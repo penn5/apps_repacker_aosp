@@ -1,7 +1,32 @@
 package android.telephony;
 
+import android.hardware.radio.V1_0.CdmaCallWaiting;
+import android.hardware.radio.V1_0.CdmaInformationRecords;
+import android.hardware.radio.V1_0.CdmaSignalInfoRecord;
+import android.hardware.radio.V1_0.CdmaSmsMessage;
+import android.hardware.radio.V1_0.CellInfo;
+import android.hardware.radio.V1_0.HardwareConfig;
+import android.hardware.radio.V1_0.LceDataInfo;
+import android.hardware.radio.V1_0.PcoDataInfo;
+import android.hardware.radio.V1_0.RadioCapability;
+import android.hardware.radio.V1_0.SetupDataCallResult;
+import android.hardware.radio.V1_0.SignalStrength;
+import android.hardware.radio.V1_0.SimRefreshResult;
+import android.hardware.radio.V1_0.StkCcUnsolSsResult;
+import android.hardware.radio.V1_0.SuppSvcNotification;
+import android.os.RemoteException;
+import java.util.ArrayList;
 import vendor.huawei.hardware.radio.V1_0.IRadioIndication;
-
+import vendor.huawei.hardware.radio.V1_0.RILAPDsFlowInfoReport;
+import vendor.huawei.hardware.radio.V1_0.RILImsCallModify;
+import vendor.huawei.hardware.radio.V1_0.RILImsHandover;
+import vendor.huawei.hardware.radio.V1_0.RILImsModifyEndCause;
+import vendor.huawei.hardware.radio.V1_0.RILImsMtStatusReport;
+import vendor.huawei.hardware.radio.V1_0.RILImsSrvstatusList;
+import vendor.huawei.hardware.radio.V1_0.RILImsSuppSvcNotification;
+import vendor.huawei.hardware.radio.V1_0.RILUnsolMsgPayload;
+import vendor.huawei.hardware.radio.V1_0.RILVsimOtaSmsResponse;
+import vendor.huawei.hardware.radio.V1_0.RILVtFlowInfoReport;
 
 public class HwRadioIndication extends IRadioIndication.Stub {
     @Override
