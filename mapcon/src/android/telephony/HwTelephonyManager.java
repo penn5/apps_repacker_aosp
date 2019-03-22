@@ -5,6 +5,7 @@ import com.android.ims.ImsManager;
 import android.content.Context;
 import com.android.internal.telephony.IPhoneCallback;
 import android.util.Log;
+import android.os.RemoteException;
 import static java.lang.Math.toIntExact;
 
 import vendor.huawei.hardware.radio.V1_0.IRadio;
@@ -16,12 +17,13 @@ public class HwTelephonyManager {
     private static HwRadioIndication indication;
     private static final String[] serviceNames = {"rildi", "rildi2", "rildi3"};
 
-    static synchronized void prepareIRadio(int slotId) {
+    static synchronized IRadio prepareIRadio(int slotId) throws RemoteException {
         if (radio != null)
             return radio;
         radio = IRadio.getService(serviceNames[slotId]);
         response = new HwRadioResponse();
         response = new HwRadioResponse();
+        return radio;
     }
 
     public static final int PHONE_EVENT_IMSA_TO_MAPCON = 4;
