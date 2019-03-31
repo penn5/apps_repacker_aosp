@@ -28,7 +28,15 @@ import vendor.huawei.hardware.radio.V1_0.RILUnsolMsgPayload;
 import vendor.huawei.hardware.radio.V1_0.RILVsimOtaSmsResponse;
 import vendor.huawei.hardware.radio.V1_0.RILVtFlowInfoReport;
 
+import android.util.Log;
+import android.os.Bundle;
+
 public class HwRadioIndication extends IRadioIndication.Stub {
+    private int slotId;
+    public HwRadioIndication(int slotId) {
+        this.slotId = slotId;
+    }
+
     @Override
     public void UnsolMsg(int i, int i1, RILUnsolMsgPayload rilUnsolMsgPayload) throws RemoteException {
 
@@ -75,8 +83,26 @@ public class HwRadioIndication extends IRadioIndication.Stub {
     }
 
     @Override
-    public void imsaToVowifiMsg(int i, ArrayList<Byte> arrayList) throws RemoteException {
-
+    public void imsaToVowifiMsg(int i, ArrayList<Byte> data) throws RemoteException {
+        Log.d("HwRadioIndication", "IMSA to VoWifi message incoming! Forwarding to Mapcon. data is "+data);
+        // onCallback1 and onCallback2 do nothing
+        // onCallback3's signature is (int i1, int i2, Bundle bundle)
+        // i1 is unused.
+        // i2 also unused.
+        // The bundle is expected to contain a single byte array under the key `imsa2mapcon_msg` and nothing else.
+        // From dissasembly of com/hisi/mapcon/TelephonyTracker$2
+        byte[] bytes = new byte[data.size()];
+        int c = 0;
+        for (Byte b : data)
+            bytes[c] = data.get(c++);
+        Bundle bundle = new Bundle();
+        bundle.putByteArray("imsa2mapcon_msg", bytes);
+        HwTelephonyManager.imsaToMapconCallbacks.get(slotId).forEach((callback) -> {
+            try {
+                callback.onCallback3(0, 0, bundle);
+            } catch (RemoteException e) {
+                Log.e("HwRadioIndication", "Dead mapcon vowifi msg reciever", e);
+            }});
     }
 
     @Override

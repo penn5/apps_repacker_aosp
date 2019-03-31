@@ -35,6 +35,10 @@ import vendor.huawei.hardware.radio.V1_0.RILUICCAUTHRESPONSE;
 import vendor.huawei.hardware.radio.V1_0.RspMsgPayload;
 
 public class HwRadioResponse extends IRadioResponse.Stub {
+    private int slotId;
+    public HwRadioResponse(int slotId) {
+        this.slotId = slotId;
+    }
 
     @Override
     public void RspMsg(RadioResponseInfo radioResponseInfo, int i, RspMsgPayload rspMsgPayload) throws RemoteException {
