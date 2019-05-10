@@ -5,6 +5,13 @@ VoLTE-HW/apk
 VoLTE-HW/vendor.huawei.hardware.radio-java.jar
 VoLTE-HW/classes.dex
 VoLTE-HW/classes-dex2jar.jar
+MtIms/classes.dex
+MtIms/classes-dex2jar.jar
+MtIms/vendor.mediatek.radio-java.jar
+MtIms/apk
+MtIms/build
+MtIms/ImsService
+MtIms/ImsService.apk
 mapcon/Mapcon.apk
 mapcon/Mapcon
 mapcon/build
