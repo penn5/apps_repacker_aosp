@@ -15,7 +15,7 @@ rm -f ImsService_classes.dex
 rm -f ImsService_classes-dex2jar.jar
 ../dex2jar/d2j-dex2jar.sh ImsService_classes.dex
 
-rm -f vendor.mediatek.hardware-java.jar
-../dex2jar/d2j-class-version-switch.sh 8 ImsService_classes-dex2jar.jar vendor.mediatek.hardware-java.jar
-zip -qd vendor.huawei.hardware.radio-java.jar 'android/*' 'com/*'
+rm -f vendor.mediatek.hardware.radio-java.jar
+../dex2jar/d2j-class-version-switch.sh 8 ImsService_classes-dex2jar.jar vendor.mediatek.hardware.radio-java.jar
+zip -qd vendor.mediatek.hardware.radio-java.jar 'android/*' 'com/*' 'vendor/*/imsa/*' 'vendor/*/netdagent/*'
 
